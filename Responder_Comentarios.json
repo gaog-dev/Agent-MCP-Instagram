@@ -1,0 +1,79 @@
+{
+  "name": "Responder-Comentarios",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "respIdComentario"
+            },
+            {
+              "name": "textResposta"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8b8fe79a-6b57-49fc-9782-141a68213763",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.instagram.com/v21.0/{{ $json.respIdComentario }}/replies ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=SUBSTITUA-ESSE-TEXTO-PELO-SEU-TOKEN"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.textResposta }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "665a8a01-8cc3-4fd1-aed1-33c323dbae90",
+      "name": "Responde Comentário",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Responde Comentário",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "29a20935-ab2d-4ad5-aeb1-3fe5bf30649d",
+  "meta": {
+    "instanceId": "4ff16e963c7f5197d7e99e6239192860914312fea0ce2a9a7fd14d74a0a0e906"
+  },
+  "id": "IxCKOpf94TntMyWZ",
+  "tags": []
+}

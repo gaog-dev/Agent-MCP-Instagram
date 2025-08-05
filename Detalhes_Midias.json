@@ -1,0 +1,68 @@
+{
+  "name": "Detalhes-Midias",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "idMidia"
+            }
+          ]
+        }
+      },
+      "id": "fe798589-ffd3-42e9-941f-d812b315213e",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.facebook.com/v20.0/{{ $json.idMidia }}?fields=caption%2Cmedia_url&access_token=SUBSTITUA-ESSE-TEXTO-PELO-SEU-TOKEN",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "bc73e607-7f71-417c-9265-2b3b1c5a9f56",
+      "name": "Criar container",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Criar container",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1f780a03-f07c-48f3-8900-3af2272dd4a7",
+  "meta": {
+    "instanceId": "4ff16e963c7f5197d7e99e6239192860914312fea0ce2a9a7fd14d74a0a0e906"
+  },
+  "id": "YsKAqROqYQNPhxaf",
+  "tags": []
+}

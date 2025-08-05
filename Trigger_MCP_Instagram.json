@@ -1,0 +1,311 @@
+{
+  "name": "Trigger-MCP-Instagram",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "mcp-insta"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9eac241f-24c5-4f4e-b3e4-6af044655f79",
+      "name": "MCP Server Trigger",
+      "webhookId": "8908a953-c518-49c2-90f5-a995c8fe69bc"
+    },
+    {
+      "parameters": {
+        "description": "Use essa tool todas vez que precisar buscar mídia de um perfil do instagram.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Enf3bVqmxJ7PkvUt",
+          "mode": "list",
+          "cachedResultName": "Buscar-midias"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "idInstagram": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('idInstagram', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "idInstagram"
+          ],
+          "schema": [
+            {
+              "id": "idInstagram",
+              "displayName": "idInstagram",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        160
+      ],
+      "id": "ea350bed-c1a9-46af-bca8-b5e9a51fbcb6",
+      "name": "buscarMidias"
+    },
+    {
+      "parameters": {
+        "description": "Use essa tool todas vez que precisar buscar detalhes de uma mídia especifica.",
+        "workflowId": {
+          "__rl": true,
+          "value": "YsKAqROqYQNPhxaf",
+          "mode": "list",
+          "cachedResultName": "Detalhes-Midias"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "idMidia": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('idMidia', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "idMidia"
+          ],
+          "schema": [
+            {
+              "id": "idMidia",
+              "displayName": "idMidia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        20,
+        300
+      ],
+      "id": "5f89946a-d2fa-464c-bb1a-3a8855340753",
+      "name": "detalhesMidias"
+    },
+    {
+      "parameters": {
+        "description": "Use essa tool todas vez que precisar buscar detalhes de uma mídia especifica.",
+        "workflowId": {
+          "__rl": true,
+          "value": "uUu4DNIuxmNCzGwm",
+          "mode": "list",
+          "cachedResultName": "Buscar-Comentarios"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "idComentario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('idComentario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "idComentario"
+          ],
+          "schema": [
+            {
+              "id": "idComentario",
+              "displayName": "idComentario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        420
+      ],
+      "id": "9ee2e908-ef96-4056-9c9c-1dc91de0cf03",
+      "name": "buscarComentarios"
+    },
+    {
+      "parameters": {
+        "description": "User essa tool toda vez que precisar responder um comentário.",
+        "workflowId": {
+          "__rl": true,
+          "value": "IxCKOpf94TntMyWZ",
+          "mode": "list",
+          "cachedResultName": "Responder-Comentarios"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "respIdComentario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('respIdComentario', ``, 'string') }}",
+            "textResposta": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('textResposta', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "respIdComentario",
+              "displayName": "respIdComentario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "textResposta",
+              "displayName": "textResposta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        300,
+        300
+      ],
+      "id": "94d4e381-0d63-4c9c-b52a-1a577c8ebc98",
+      "name": "responderComentario"
+    },
+    {
+      "parameters": {
+        "description": "Use essa tooltoda vez que precisar enviar uma mensagem no privado do autor do comentario",
+        "workflowId": {
+          "__rl": true,
+          "value": "9cXoiVdFWcKbBp6o",
+          "mode": "list",
+          "cachedResultName": "Enviar-DM"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "idComentarioResp": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('idComentarioResp', ``, 'string') }}",
+            "textoRespDM": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('textoRespDM', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "idComentarioResp",
+              "displayName": "idComentarioResp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "textoRespDM",
+              "displayName": "textoRespDM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        380,
+        160
+      ],
+      "id": "c67b6db7-5e63-4eb8-8b34-d40e0daa750f",
+      "name": "enviarDM"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "buscarMidias": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "detalhesMidias": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "buscarComentarios": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "responderComentario": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "enviarDM": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6801afc2-930c-4f0d-9b6f-e0d1bc273cb7",
+  "meta": {
+    "instanceId": "4ff16e963c7f5197d7e99e6239192860914312fea0ce2a9a7fd14d74a0a0e906"
+  },
+  "id": "bBtbxp0wJ3buyMo0",
+  "tags": []
+}
